@@ -7,7 +7,15 @@ export const employeeApi = baseApi.injectEndpoints({
       query: () => "/employees",
       providesTags: ["Employee"],
     }),
+    createEmployee: builder.mutation<EmployeeType, Partial<EmployeeType>>({
+      query: (body) => ({
+        url: "/employees",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Employee"],
+    }),
   }),
 });
 
-export const { useGetEmployeesQuery } = employeeApi;
+export const { useGetEmployeesQuery, useCreateEmployeeMutation } = employeeApi;
