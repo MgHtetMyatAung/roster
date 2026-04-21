@@ -1,0 +1,20 @@
+{
+  "menu": {
+    "dashboard": "ဒက်ရှ်ဘုတ်",
+    "employees": "ဝန်ထမ်းများ",
+    "projects": "ပရောဂျက်များ",
+    "payroll": "လစာစနစ်",
+    "hiring": "ဝန်ထမ်းခန့်ထားခြင်း",
+    "meetingRooms": "အစည်းအဝေးခန်းများ",
+    "recruitment": "ခေါ်ယူမှု",
+    "aiInsights": "AI ခွဲခြမ်းစိတ်ဖြာမှု",
+    "list": "စာရင်း",
+    "create": "ဖန်တီးရန်",
+    "leave": "ခွင့်",
+    "candidates": "လျှောက်ထားသူများ",
+    "introduction": "မိတ်ဆက်",
+    "getStarted": "စတင်ရန်",
+    "tutorials": "သင်ခန်းစာများ",
+    "changelog": "ပြောင်းလဲမှုများ"
+  }
+}

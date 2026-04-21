@@ -1,0 +1,20 @@
+{
+  "menu": {
+    "dashboard": "Dashboard",
+    "employees": "Employees",
+    "projects": "Projects",
+    "payroll": "Payroll",
+    "hiring": "Hiring",
+    "meetingRooms": "Meeting Rooms",
+    "recruitment": "Recruitment",
+    "aiInsights": "AI Insights",
+    "list": "List",
+    "create": "Create",
+    "leave": "Leave",
+    "candidates": "Candidates",
+    "introduction": "Introduction",
+    "getStarted": "Get Started",
+    "tutorials": "Tutorials",
+    "changelog": "Changelog"
+  }
+}
