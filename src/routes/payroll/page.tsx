@@ -1,15 +1,9 @@
-import { useGetPayrollsQuery } from "@/api/user-api";
-import JsonView from "@/components/common/json-view";
-import PageTitle from "@/components/common/page-title";
+import PayrollTable from "@/features/payroll/components/payroll-table";
 
 export default function PayrollPage() {
-  const { data, isLoading } = useGetPayrollsQuery();
-
-  if (isLoading) return <p>Loading ...</p>;
   return (
-    <div>
-      <PageTitle>Payroll</PageTitle>
-      <JsonView data={data} />
+    <div className="p-6">
+      <PayrollTable />
     </div>
   );
 }
