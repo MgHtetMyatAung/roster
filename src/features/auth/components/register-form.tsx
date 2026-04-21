@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { ROUTE_NAMES } from "@/constants/route.names";
 
-export function LoginForm({
+export function RegisterForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
@@ -19,15 +19,24 @@ export function LoginForm({
   return (
     <div className={cn("max-w-100 mx-auto", className)} {...props}>
       <Card className="overflow-hidden p-0">
-        <CardContent className=" px-0 md:px-4">
+        <CardContent className="px-0 md:px-4">
           <form className="p-6">
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
-                <h1 className="text-2xl font-bold">{t("welcome_back")}</h1>
+                <h1 className="text-2xl font-bold">{t("register_title")}</h1>
                 <p className="text-muted-foreground text-balance">
-                  {t("login_description")}
+                  {t("register_description")}
                 </p>
               </div>
+              <Field>
+                <FieldLabel htmlFor="name">{t("name")}</FieldLabel>
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="John Doe"
+                  required
+                />
+              </Field>
               <Field>
                 <FieldLabel htmlFor="email">{t("email")}</FieldLabel>
                 <Input
@@ -38,26 +47,22 @@ export function LoginForm({
                 />
               </Field>
               <Field>
-                <div className="flex items-center">
-                  <FieldLabel htmlFor="password">{t("password")}</FieldLabel>
-                  <Link
-                    to={`/auth/${ROUTE_NAMES.FORGOT_PASSWORD}`}
-                    className="ml-auto text-sm underline-offset-2 hover:underline"
-                  >
-                    {t("forgot_password")}
-                  </Link>
-                </div>
+                <FieldLabel htmlFor="password">{t("password")}</FieldLabel>
                 <Input id="password" type="password" required />
               </Field>
               <Field>
+                <FieldLabel htmlFor="confirm_password">{t("confirm_password")}</FieldLabel>
+                <Input id="confirm_password" type="password" required />
+              </Field>
+              <Field>
                 <Button type="submit" className="w-full cursor-pointer">
-                  {t("login")}
+                  {t("register")}
                 </Button>
               </Field>
               <div className="text-center text-sm">
-                {t("dont_have_account")}{" "}
-                <Link to={`/auth/${ROUTE_NAMES.REGISTER}`} className="underline underline-offset-4">
-                  {t("sign_up")}
+                {t("already_have_account")}{" "}
+                <Link to={`/auth/${ROUTE_NAMES.LOGIN}`} className="underline underline-offset-4">
+                  {t("sign_in")}
                 </Link>
               </div>
             </FieldGroup>

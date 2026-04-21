@@ -1,5 +1,7 @@
 export const ROUTE_NAMES = {
   LOGIN: "login",
+  REGISTER: "register",
+  FORGOT_PASSWORD: "forgot-password",
   FORBIDDEN: "forbidden",
   DASHBOARD: "dashboard",
   EMPLOYEE: "employee",

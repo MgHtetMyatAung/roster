@@ -5,7 +5,7 @@ import RootLayout from "@/layouts/root-layout";
 import { NotFoundPage } from "./404";
 import { CreateEmployeePage, employeeLoader, EmployeePage } from "./employee";
 import { ROUTE_NAMES } from "@/constants/route.names";
-import { LoginPage } from "./auth";
+import { ForgotPasswordPage, LoginPage, RegisterPage } from "./auth";
 import { leaveLoader } from "./leave";
 import { ForbiddenPage } from "./403";
 import { PayrollPage } from "./payroll";
@@ -19,8 +19,21 @@ export const routes = createBrowserRouter([
         loader: () => redirect(ROUTE_NAMES.DASHBOARD),
       },
       {
-        path: ROUTE_NAMES.LOGIN,
-        Component: LoginPage,
+        path: "auth",
+        children: [
+          {
+            path: ROUTE_NAMES.LOGIN,
+            Component: LoginPage,
+          },
+          {
+            path: ROUTE_NAMES.REGISTER,
+            Component: RegisterPage,
+          },
+          {
+            path: ROUTE_NAMES.FORGOT_PASSWORD,
+            Component: ForgotPasswordPage,
+          },
+        ],
       },
       {
         path: ROUTE_NAMES.DASHBOARD,
