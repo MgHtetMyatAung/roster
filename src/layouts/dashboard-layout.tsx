@@ -16,7 +16,7 @@ export default function DashboardLayout() {
       <AppSidebar />
       <SidebarInset>
         <Header />
-        <main className=" p-4">
+        <main className=" p-6">
           <Outlet />
         </main>
       </SidebarInset>

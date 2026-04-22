@@ -3,6 +3,9 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/figtree";
 
+/* external css files  */
+@import "./customize.css";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -128,6 +131,23 @@
   }
   html {
     @apply font-sans;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    /* Matches your theme's background */
+    -webkit-box-shadow: 0 0 0 1000px var(--background) inset !important;
+
+    /* Matches your theme's text color */
+    -webkit-text-fill-color: var(--foreground) !important;
+
+    /* Ensures the typing cursor matches the text color */
+    caret-color: var(--foreground);
+
+    /* Match your border radius variable */
+    border-radius: var(--radius);
   }
 }
 

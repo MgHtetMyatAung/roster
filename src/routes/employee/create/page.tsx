@@ -2,7 +2,7 @@ import EmployeeCreateForm from "@/features/employee/components/employee-create-f
 
 export default function CreateEmployeePage() {
   return (
-    <div className="p-6">
+    <div className="">
       <EmployeeCreateForm />
     </div>
   );

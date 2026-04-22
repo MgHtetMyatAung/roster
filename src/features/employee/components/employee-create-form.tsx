@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { useCreateEmployeeMutation } from "@/api/employee-api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,21 +9,10 @@ import {
   FieldLabel,
   FieldError,
 } from "@/components/ui/field";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
-
-const employeeSchema = z.object({
-  fullName: z.string().min(2, "Full name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(5, "Phone number must be at least 5 characters"),
-  department: z.string().min(1, "Department is required"),
-  position: z.string().min(1, "Position is required"),
-  joiningDate: z.string().min(1, "Joining date is required"),
-  basicSalary: z.number().min(0, "Salary must be a positive number"),
-});
-
-type EmployeeFormValues = z.infer<typeof employeeSchema>;
+import { ROUTE_LINKS } from "@/constants/route.links";
+import { employeeSchema, type EmployeeFormValues } from "../validation";
 
 export default function EmployeeCreateForm() {
   const [createEmployee, { isLoading }] = useCreateEmployeeMutation();
@@ -63,125 +51,152 @@ export default function EmployeeCreateForm() {
   return (
     <div className="w-full ">
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-2xl font-bold">Employee Information</h1>
-        <div className="flex items-center gap-2 text-primary text-sm font-medium">
-          Your Current Ubication <span className="text-lg">🇩🇴</span>
-        </div>
+        <h1 className=" text-2xl font-bold">Employee Information</h1>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-        <FieldGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
-          <Field>
-            <FieldLabel htmlFor="fullName" className=" font-semibold">
-              Full Name <span className="text-destructive font-bold text-lg">*</span>
+        <FieldGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:gap-x-8 2xl:gap-y-6">
+          <Field className=" gap-1">
+            <FieldLabel
+              htmlFor="fullName"
+              className=" text-muted-foreground font-medium"
+            >
+              Full Name{" "}
+              <span className="text-destructive font-bold text-lg">*</span>
             </FieldLabel>
             <Input
               id="fullName"
               placeholder="Full Name"
-              className=" border h-12 focus-visible:ring-primary"
+              className=" border"
               {...register("fullName")}
             />
             <FieldError errors={[errors.fullName]} />
           </Field>
 
-          <Field>
-            <FieldLabel htmlFor="email" className=" font-semibold">
-              Email Address <span className="text-destructive font-bold text-lg">*</span>
+          <Field className=" gap-1">
+            <FieldLabel
+              htmlFor="email"
+              className=" text-muted-foreground font-medium"
+            >
+              Email Address{" "}
+              <span className="text-destructive font-bold text-lg">*</span>
             </FieldLabel>
             <Input
               id="email"
               type="email"
               placeholder="Email Address"
-              className=" border h-12 focus-visible:ring-primary"
+              className=" border"
               {...register("email")}
             />
             <FieldError errors={[errors.email]} />
           </Field>
 
-          <Field>
-            <FieldLabel htmlFor="phone" className=" font-semibold">
-              Phone Number <span className="text-destructive font-bold text-lg">*</span>
+          <Field className=" gap-1">
+            <FieldLabel
+              htmlFor="phone"
+              className=" text-muted-foreground font-medium"
+            >
+              Phone Number{" "}
+              <span className="text-destructive font-bold text-lg">*</span>
             </FieldLabel>
             <Input
               id="phone"
               placeholder="Phone Number"
-              className=" border h-12 focus-visible:ring-primary"
+              className=" border"
               {...register("phone")}
             />
             <FieldError errors={[errors.phone]} />
           </Field>
 
-          <Field>
-            <FieldLabel htmlFor="department" className=" font-semibold">
-              Department <span className="text-destructive font-bold text-lg">*</span>
+          <Field className=" gap-1">
+            <FieldLabel
+              htmlFor="department"
+              className=" text-muted-foreground font-medium"
+            >
+              Department{" "}
+              <span className="text-destructive font-bold text-lg">*</span>
             </FieldLabel>
             <Input
               id="department"
               placeholder="Department"
-              className=" border h-12 focus-visible:ring-primary"
+              className=" border"
               {...register("department")}
             />
             <FieldError errors={[errors.department]} />
           </Field>
 
-          <Field>
-            <FieldLabel htmlFor="position" className=" font-semibold">
-              Position <span className="text-destructive font-bold text-lg">*</span>
+          <Field className=" gap-1">
+            <FieldLabel
+              htmlFor="position"
+              className=" text-muted-foreground font-medium"
+            >
+              Position{" "}
+              <span className="text-destructive font-bold text-lg">*</span>
             </FieldLabel>
             <Input
               id="position"
               placeholder="Position"
-              className=" border h-12 focus-visible:ring-primary"
+              className=" border"
               {...register("position")}
             />
             <FieldError errors={[errors.position]} />
           </Field>
 
-          <Field>
-            <FieldLabel htmlFor="joiningDate" className=" font-semibold">
-              Joining Date <span className="text-destructive font-bold text-lg">*</span>
+          <Field className=" gap-1">
+            <FieldLabel
+              htmlFor="joiningDate"
+              className=" text-muted-foreground font-medium"
+            >
+              Joining Date{" "}
+              <span className="text-destructive font-bold text-lg">*</span>
             </FieldLabel>
             <Input
               id="joiningDate"
               type="date"
-              className=" border h-12 focus-visible:ring-primary"
+              className=" border"
               {...register("joiningDate")}
             />
             <FieldError errors={[errors.joiningDate]} />
           </Field>
 
-          <Field>
-            <FieldLabel htmlFor="basicSalary" className=" font-semibold">
-              Basic Salary <span className="text-destructive font-bold text-lg">*</span>
+          <Field className=" gap-1">
+            <FieldLabel
+              htmlFor="basicSalary"
+              className=" text-muted-foreground font-medium"
+            >
+              Basic Salary{" "}
+              <span className="text-destructive font-bold text-lg">*</span>
             </FieldLabel>
             <Input
               id="basicSalary"
               type="number"
               placeholder="Basic Salary"
-              className=" border h-12 focus-visible:ring-primary"
+              className=" border"
               {...register("basicSalary", { valueAsNumber: true })}
+              min={0}
             />
             <FieldError errors={[errors.basicSalary]} />
           </Field>
         </FieldGroup>
 
         <p className="text-sm text-slate-500 italic">
-          In order to process registration provide the following information. All fields marked with an asterisk (*) are required.
+          In order to process registration provide the following information.
+          All fields marked with an asterisk (*) are .
         </p>
 
         <div className="flex justify-start gap-4 pt-4">
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             disabled={isLoading}
-            className="bg-primary hover:bg-primary/90 text-white font-semibold h-12 px-8 rounded-none"
+            className="bg-primary hover:bg-primary/90 text-white font-semibold"
           >
             {isLoading ? "Saving..." : "Save Employee"}
           </Button>
           <Button
             type="button"
             variant="ghost"
-            onClick={() => navigate("/employee")}
-            className="h-12"
+            onClick={() => navigate(ROUTE_LINKS.EMPLOYEE)}
+            className=""
           >
             Cancel
           </Button>
