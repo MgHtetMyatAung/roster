@@ -16,7 +16,7 @@ export default function DashboardLayout() {
       <AppSidebar />
       <SidebarInset>
         <Header />
-        <main className=" p-6">
+        <main className="min-w-0 max-w-full overflow-x-hidden p-6">
           <Outlet />
         </main>
       </SidebarInset>

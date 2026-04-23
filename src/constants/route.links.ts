@@ -4,6 +4,9 @@ export const ROUTE_LINKS = {
   USER: "/dashboard/user",
   PRODUCT: "/dashboard/product",
   CATEGORY: "/dashboard/category",
+  DEPARTMENTS: "/dashboard/departments",
+  VIEW_DEPARTMENT: "/dashboard/departments/view/:id",
+  CREATE_DEPARTMENT: "/dashboard/departments/create",
 
   //#region Employee
   EMPLOYEE: "/dashboard/employee",

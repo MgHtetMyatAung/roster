@@ -4,6 +4,7 @@ export const ROUTE_NAMES = {
   FORGOT_PASSWORD: "forgot-password",
   FORBIDDEN: "forbidden",
   DASHBOARD: "dashboard",
+  DEPARTMENTS: "departments",
   EMPLOYEE: "employee",
   LEAVE: "leave",
   RECRUITMENT: "recruitment",

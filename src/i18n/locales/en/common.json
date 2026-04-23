@@ -2,6 +2,7 @@
   "menu": {
     "dashboard": "Dashboard",
     "employees": "Employees",
+    "departments": "Departments",
     "projects": "Projects",
     "payroll": "Payroll",
     "hiring": "Hiring",

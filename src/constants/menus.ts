@@ -3,6 +3,7 @@ import {
   BookOpen,
   Bot,
   BriefcaseBusiness,
+  Building2,
   Command,
   Frame,
   GalleryVerticalEnd,
@@ -76,6 +77,16 @@ export const MENUS = {
       url: ROUTE_LINKS.PAYROLL,
       isActive: false,
       item: [],
+    },
+    {
+      titleKey: "menu.departments",
+      icon: Building2,
+      url: "#",
+      isActive: false,
+      items: [
+        { titleKey: "menu.list", url: ROUTE_LINKS.DEPARTMENTS },
+        { titleKey: "menu.create", url: ROUTE_LINKS.CREATE_DEPARTMENT },
+      ],
     },
     {
       titleKey: "menu.hiring",

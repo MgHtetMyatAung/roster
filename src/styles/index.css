@@ -159,3 +159,80 @@ html {
 .min-d-h {
   @apply min-h-[calc(100vh-64px)];
 }
+
+.org-root,
+.org-root ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.org-root {
+  display: flex;
+  justify-content: center;
+}
+
+.org-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.25rem;
+}
+
+.org-children {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding-top: 3rem;
+}
+
+.org-node > .org-children::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 1.5rem;
+  transform: translateX(-50%);
+  background: var(--org-line);
+}
+
+.org-node > .org-children > .org-node::before,
+.org-node > .org-children > .org-node::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  background: var(--org-line);
+}
+
+.org-node > .org-children > .org-node::before {
+  left: 50%;
+  width: 1px;
+  height: 1.5rem;
+  transform: translateX(-50%);
+}
+
+.org-node > .org-children > .org-node::after {
+  top: 0;
+  height: 1px;
+  width: 50%;
+}
+
+.org-node > .org-children > .org-node:first-child::after {
+  left: 50%;
+}
+
+.org-node > .org-children > .org-node:last-child::after {
+  right: 50%;
+}
+
+.org-node > .org-children > .org-node:only-child::after {
+  display: none;
+}
+
+.org-node > .org-children > .org-node:not(:first-child):not(:last-child)::after {
+  left: 0;
+  width: 100%;
+}

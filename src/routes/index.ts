@@ -6,6 +6,11 @@ import { NotFoundPage } from "./404";
 import { CreateEmployeePage, employeeLoader, EmployeePage } from "./employee";
 import { ROUTE_NAMES } from "@/constants/route.names";
 import { ForgotPasswordPage, LoginPage, RegisterPage } from "./auth";
+import {
+  CreateDepartmentPage,
+  DepartmentDetailPage,
+  DepartmentsPage,
+} from "./departments";
 import { leaveLoader } from "./leave";
 import { ForbiddenPage } from "./403";
 import { PayrollPage } from "./payroll";
@@ -70,6 +75,23 @@ export const routes = createBrowserRouter([
           {
             path: ROUTE_NAMES.PAYROLL,
             Component: PayrollPage,
+          },
+          {
+            path: ROUTE_NAMES.DEPARTMENTS,
+            children: [
+              {
+                index: true,
+                Component: DepartmentsPage,
+              },
+              {
+                path: ROUTE_NAMES.CREATE,
+                Component: CreateDepartmentPage,
+              },
+              {
+                path: ROUTE_NAMES.DETAIL,
+                Component: DepartmentDetailPage,
+              },
+            ],
           },
         ],
       },
