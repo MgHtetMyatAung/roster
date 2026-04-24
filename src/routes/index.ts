@@ -3,7 +3,12 @@ import { createBrowserRouter, redirect } from "react-router";
 import DashboardPage, { loader } from "./dashboard";
 import RootLayout from "@/layouts/root-layout";
 import { NotFoundPage } from "./404";
-import { CreateEmployeePage, employeeLoader, EmployeePage } from "./employee";
+import {
+  CreateEmployeePage,
+  EmployeeDetailPage,
+  employeeLoader,
+  EmployeePage,
+} from "./employee";
 import { ROUTE_NAMES } from "@/constants/route.names";
 import { ForgotPasswordPage, LoginPage, RegisterPage } from "./auth";
 import {
@@ -60,6 +65,10 @@ export const routes = createBrowserRouter([
               {
                 path: ROUTE_NAMES.CREATE,
                 Component: CreateEmployeePage,
+              },
+              {
+                path: ROUTE_NAMES.DETAIL,
+                Component: EmployeeDetailPage,
               },
               {
                 path: ROUTE_NAMES.LEAVE,

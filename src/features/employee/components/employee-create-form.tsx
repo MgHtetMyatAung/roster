@@ -42,136 +42,114 @@ export default function EmployeeCreateForm() {
         status: "Active",
       }).unwrap();
       toast.success("Employee created successfully");
-      navigate("/employee");
+      navigate(ROUTE_LINKS.EMPLOYEE);
     } catch (error) {
       toast.error("Failed to create employee");
     }
   };
 
   return (
-    <div className="w-full ">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className=" text-2xl font-bold">Employee Information</h1>
+    <div className="w-full">
+      <div className="mb-8 flex items-center justify-between">
+        <h1 className="text-2xl font-bold">Employee Information</h1>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         <FieldGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:gap-x-8 2xl:gap-y-6">
-          <Field className=" gap-1">
-            <FieldLabel
-              htmlFor="fullName"
-              className=" text-muted-foreground font-medium"
-            >
-              Full Name{" "}
-              <span className="text-destructive font-bold text-lg">*</span>
+          <Field className="gap-1">
+            <FieldLabel htmlFor="fullName" className="font-medium text-muted-foreground">
+              Full Name
             </FieldLabel>
             <Input
               id="fullName"
               placeholder="Full Name"
-              className=" border"
+              className="border"
               {...register("fullName")}
             />
             <FieldError errors={[errors.fullName]} />
           </Field>
 
-          <Field className=" gap-1">
-            <FieldLabel
-              htmlFor="email"
-              className=" text-muted-foreground font-medium"
-            >
-              Email Address{" "}
-              <span className="text-destructive font-bold text-lg">*</span>
+          <Field className="gap-1">
+            <FieldLabel htmlFor="email" className="font-medium text-muted-foreground">
+              Email Address
             </FieldLabel>
             <Input
               id="email"
               type="email"
               placeholder="Email Address"
-              className=" border"
+              className="border"
               {...register("email")}
             />
             <FieldError errors={[errors.email]} />
           </Field>
 
-          <Field className=" gap-1">
-            <FieldLabel
-              htmlFor="phone"
-              className=" text-muted-foreground font-medium"
-            >
-              Phone Number{" "}
-              <span className="text-destructive font-bold text-lg">*</span>
+          <Field className="gap-1">
+            <FieldLabel htmlFor="phone" className="font-medium text-muted-foreground">
+              Phone Number
             </FieldLabel>
             <Input
               id="phone"
               placeholder="Phone Number"
-              className=" border"
+              className="border"
               {...register("phone")}
             />
             <FieldError errors={[errors.phone]} />
           </Field>
 
-          <Field className=" gap-1">
-            <FieldLabel
-              htmlFor="department"
-              className=" text-muted-foreground font-medium"
-            >
-              Department{" "}
-              <span className="text-destructive font-bold text-lg">*</span>
+          <Field className="gap-1">
+            <FieldLabel htmlFor="department" className="font-medium text-muted-foreground">
+              Department
             </FieldLabel>
             <Input
               id="department"
               placeholder="Department"
-              className=" border"
+              className="border"
               {...register("department")}
             />
             <FieldError errors={[errors.department]} />
           </Field>
 
-          <Field className=" gap-1">
-            <FieldLabel
-              htmlFor="position"
-              className=" text-muted-foreground font-medium"
-            >
-              Position{" "}
-              <span className="text-destructive font-bold text-lg">*</span>
+          <Field className="gap-1">
+            <FieldLabel htmlFor="position" className="font-medium text-muted-foreground">
+              Position
             </FieldLabel>
             <Input
               id="position"
               placeholder="Position"
-              className=" border"
+              className="border"
               {...register("position")}
             />
             <FieldError errors={[errors.position]} />
           </Field>
 
-          <Field className=" gap-1">
+          <Field className="gap-1">
             <FieldLabel
               htmlFor="joiningDate"
-              className=" text-muted-foreground font-medium"
+              className="font-medium text-muted-foreground"
             >
-              Joining Date{" "}
-              <span className="text-destructive font-bold text-lg">*</span>
+              Joining Date
             </FieldLabel>
             <Input
               id="joiningDate"
               type="date"
-              className=" border"
+              className="border"
               {...register("joiningDate")}
             />
             <FieldError errors={[errors.joiningDate]} />
           </Field>
 
-          <Field className=" gap-1">
+          <Field className="gap-1">
             <FieldLabel
               htmlFor="basicSalary"
-              className=" text-muted-foreground font-medium"
+              className="font-medium text-muted-foreground"
             >
-              Basic Salary{" "}
-              <span className="text-destructive font-bold text-lg">*</span>
+              Basic Salary
             </FieldLabel>
             <Input
               id="basicSalary"
               type="number"
               placeholder="Basic Salary"
-              className=" border"
+              className="border"
               {...register("basicSalary", { valueAsNumber: true })}
               min={0}
             />
@@ -179,24 +157,14 @@ export default function EmployeeCreateForm() {
           </Field>
         </FieldGroup>
 
-        <p className="text-sm text-slate-500 italic">
-          In order to process registration provide the following information.
-          All fields marked with an asterisk (*) are .
-        </p>
-
         <div className="flex justify-start gap-4 pt-4">
-          <Button
-            type="submit"
-            disabled={isLoading}
-            className="bg-primary hover:bg-primary/90 text-white font-semibold"
-          >
+          <Button type="submit" disabled={isLoading}>
             {isLoading ? "Saving..." : "Save Employee"}
           </Button>
           <Button
             type="button"
             variant="ghost"
             onClick={() => navigate(ROUTE_LINKS.EMPLOYEE)}
-            className=""
           >
             Cancel
           </Button>

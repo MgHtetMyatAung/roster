@@ -1,5 +1,6 @@
 export type EmployeeType = {
   employeeId: string;
+  imageUrl?: string;
   fullName: string;
   email: string;
   phone: string;
