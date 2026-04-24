@@ -5,7 +5,6 @@ import {
   startTransition,
   useState,
   type PointerEvent,
-  type WheelEvent,
 } from "react";
 import { Minus, Plus, RotateCcw } from "lucide-react";
 
@@ -289,14 +288,18 @@ export default function DepartmentOrgChart({
 
   const zoomLabel = `${Math.round(zoom * 100)}%`;
 
-  const applyZoom = (nextZoom: number) => {
+  const nudgeZoom = (delta: number) => {
     startTransition(() => {
-      setZoom(Number(Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, nextZoom)).toFixed(2)));
+      setZoom((currentZoom) =>
+        Number(
+          Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, currentZoom + delta)).toFixed(2),
+        ),
+      );
     });
   };
 
-  const handleZoomIn = () => applyZoom(zoom + ZOOM_STEP);
-  const handleZoomOut = () => applyZoom(zoom - ZOOM_STEP);
+  const handleZoomIn = () => nudgeZoom(ZOOM_STEP);
+  const handleZoomOut = () => nudgeZoom(-ZOOM_STEP);
   const handleReset = () => {
     setZoom(1);
     if (viewportRef.current) {
@@ -306,12 +309,6 @@ export default function DepartmentOrgChart({
         y: 24,
       });
     }
-  };
-
-  const handleWheel = (event: WheelEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const direction = event.deltaY > 0 ? -1 : 1;
-    applyZoom(zoom + direction * ZOOM_STEP);
   };
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
@@ -351,6 +348,22 @@ export default function DepartmentOrgChart({
     event.currentTarget.releasePointerCapture(event.pointerId);
   };
 
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const handleWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      nudgeZoom(event.deltaY > 0 ? -ZOOM_STEP : ZOOM_STEP);
+    };
+
+    viewport.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      viewport.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   return (
     <div className="max-w-full min-w-0">
       <div
@@ -359,7 +372,6 @@ export default function DepartmentOrgChart({
           "relative h-[calc(100vh-13rem)] max-h-[900px] min-h-[560px] max-w-full overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-50 select-none",
           isDragging ? "cursor-grabbing" : "cursor-grab",
         )}
-        onWheel={handleWheel}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
