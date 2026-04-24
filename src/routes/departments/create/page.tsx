@@ -2,7 +2,7 @@ import DepartmentCreateForm from "@/features/department/components/department-cr
 
 export default function CreateDepartmentPage() {
   return (
-    <div className="p-6">
+    <div className="">
       <DepartmentCreateForm />
     </div>
   );
