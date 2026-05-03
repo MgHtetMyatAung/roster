@@ -9,8 +9,6 @@ import {
   UsersRound,
 } from "lucide-react";
 
-import { DataTableDemo } from "@/components/table/data-table";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,

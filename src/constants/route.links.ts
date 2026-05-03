@@ -16,6 +16,11 @@ export const ROUTE_LINKS = {
   EMPLOYEE_LEAVE: "/dashboard/employee/leave",
   //#endregion
 
+  //#region Roster
+  ROSTER: "/dashboard/roster",
+  WEEKLY_ROSTER: "/dashboard/roster/weekly",
+  //#endregion
+
   //#region Recruitment
   RECRUITMENT: "/dashboard/recruitment",
   VIEW_RECRUITMENT: "/dashboard/recruitment/view/:id",

@@ -1,5 +1,7 @@
 {
   "menu": {
+    "roster": "Roster",
+    "weeklyBuilder": "Weekly Builder",
     "dashboard": "ဒက်ရှ်ဘုတ်",
     "employees": "ဝန်ထမ်းများ",
     "departments": "ဌာနများ",

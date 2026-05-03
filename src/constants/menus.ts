@@ -4,6 +4,7 @@ import {
   Bot,
   BriefcaseBusiness,
   Building2,
+  CalendarRange,
   Command,
   Frame,
   GalleryVerticalEnd,
@@ -57,6 +58,15 @@ export const MENUS = {
         { titleKey: "menu.list", url: ROUTE_LINKS.EMPLOYEE },
         { titleKey: "menu.create", url: ROUTE_LINKS.CREATE_EMPLOYEE },
         { titleKey: "menu.leave", url: ROUTE_LINKS.EMPLOYEE_LEAVE },
+      ],
+    },
+    {
+      titleKey: "menu.roster",
+      icon: CalendarRange,
+      url: "#",
+      isActive: false,
+      items: [
+        { titleKey: "menu.weeklyBuilder", url: ROUTE_LINKS.WEEKLY_ROSTER },
       ],
     },
     {

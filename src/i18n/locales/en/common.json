@@ -1,5 +1,7 @@
 {
   "menu": {
+    "roster": "Roster",
+    "weeklyBuilder": "Weekly Builder",
     "dashboard": "Dashboard",
     "employees": "Employees",
     "departments": "Departments",

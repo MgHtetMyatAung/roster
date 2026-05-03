@@ -19,6 +19,7 @@ import {
 import { leaveLoader } from "./leave";
 import { ForbiddenPage } from "./403";
 import { PayrollPage } from "./payroll";
+import { WeeklyRosterPage } from "./roster";
 
 export const routes = createBrowserRouter([
   {
@@ -84,6 +85,19 @@ export const routes = createBrowserRouter([
           {
             path: ROUTE_NAMES.PAYROLL,
             Component: PayrollPage,
+          },
+          {
+            path: ROUTE_NAMES.ROSTER,
+            children: [
+              {
+                index: true,
+                loader: () => redirect(ROUTE_NAMES.WEEKLY),
+              },
+              {
+                path: ROUTE_NAMES.WEEKLY,
+                Component: WeeklyRosterPage,
+              },
+            ],
           },
           {
             path: ROUTE_NAMES.DEPARTMENTS,

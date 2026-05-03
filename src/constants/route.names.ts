@@ -7,6 +7,8 @@ export const ROUTE_NAMES = {
   DEPARTMENTS: "departments",
   EMPLOYEE: "employee",
   LEAVE: "leave",
+  ROSTER: "roster",
+  WEEKLY: "weekly",
   RECRUITMENT: "recruitment",
   PAYROLL: "payroll",
 
